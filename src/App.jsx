@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { currencies } from "./constants";
 import ExchangeChart from "./exchangeChart";
+import { saveToHistory, getHistory } from "./utils/cacheHistory";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -10,10 +11,15 @@ function App() {
   const [toList, setToList] = useState(["BRL"]);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
+
+  useEffect(() => {
+    setHistory(getHistory());
+  }, []);
 
   const handleAddCurrency = () => {
     if (toList.length < 5) {
@@ -37,18 +43,26 @@ function App() {
       const requests = toList.map((currency) =>
         axios.get("http://localhost:3000/currency-converter/convert", {
           params: { from, to: currency, amount },
-          headers: { Authorization: import.meta.env.VITE_API_KEY },
+          headers: {
+            Authorization: import.meta.env.VITE_API_KEY,
+          },
         })
       );
 
       const responses = await Promise.all(requests);
+
       const results = responses.map((res, i) => ({
         to: toList[i],
         result: res.data.result,
         rate: res.data.rate,
+        from,
+        amount,
+        date: new Date().toISOString(),
       }));
 
       setResult(results);
+      saveToHistory(results);
+      setHistory(getHistory());
     } catch (err) {
       const msg =
         err.response?.data?.message || err.message || "Erro inesperado";
@@ -116,6 +130,22 @@ function App() {
           )}
         </div>
 
+        {history.length > 0 && (
+          <div className="history">
+            <h2>Histórico de Conversões</h2>
+            <ul>
+              {history.map((entry, i) =>
+                entry.map((h, idx) => (
+                  <li key={`${i}-${idx}`}>
+                    {h.amount} {h.from} → {h.to} = {Number(h.result).toFixed(2)}{" "}
+                    (Taxa: {h.rate.toFixed(4)})
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+        )}
+
         {result && (
           <>
             <div className="result">
@@ -134,6 +164,23 @@ function App() {
                 </p>
               ))}
             </div>
+
+            {history.length > 0 && (
+              <div className="history">
+                <h2>Histórico de Conversões</h2>
+                <ul>
+                  {history.map((entry, i) =>
+                    entry.map((h, idx) => (
+                      <li key={`${i}-${idx}`}>
+                        {h.amount} {h.from} → {h.to} ={" "}
+                        {Number(h.result).toFixed(2)} (Taxa: {h.rate.toFixed(4)}
+                        )
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
+            )}
 
             <ExchangeChart from={from} toList={result.map((r) => r.to)} />
           </>

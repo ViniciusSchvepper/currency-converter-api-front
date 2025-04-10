@@ -127,3 +127,46 @@ body.dark .theme-toggle-floating:hover {
 .currency-actions .full:hover {
   opacity: 0.85;
 }
+
+.history {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.dark .history {
+  background-color: #222;
+  border-color: #444;
+  color: #eee;
+}
+
+.history h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history li {
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed #ccc;
+  font-size: 0.95rem;
+}
+
+.dark .history li {
+  border-color: #444;
+}
+
+.error {
+  color: #dc3545;
+  font-weight: bold;
+}
