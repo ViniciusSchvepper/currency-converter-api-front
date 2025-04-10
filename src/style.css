@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #22223b;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  height: auto;
+}
+
+body.dark {
+  background-color: #1d1c2d;
+  color: #f4f4f4;
+}
+
+.container {
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  background-color: #f4f4f4;
+  text-align: center;
+  position: relative;
+}
+
+body.dark .container {
+  background-color: #2a293e;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+body.dark input,
+body.dark select {
+  background-color: #1d1c2d;
+  color: #f4f4f4;
+  border: 1px solid #555;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #f9b233;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #e5a027;
+}
+
+.theme-toggle-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle-floating:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: #999;
+}
+
+body.dark .theme-toggle-floating {
+  border-color: #555;
+}
+
+body.dark .theme-toggle-floating:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #999;
+}
+
+.currency-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.currency-actions .half {
+  flex: 1;
+  padding: 0.75rem;
+  background-color: #f9b233;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.currency-actions .full {
+  flex: 1 1 100%;
+  padding: 0.75rem;
+  background-color: #dc3545;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.currency-actions .half:hover,
+.currency-actions .full:hover {
+  opacity: 0.85;
+}
