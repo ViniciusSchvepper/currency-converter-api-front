@@ -133,22 +133,6 @@ function App() {
           )}
         </div>
 
-        {history.length > 0 && (
-          <div className="history">
-            <h2>Histórico de Conversões</h2>
-            <ul>
-              {history.map((entry, i) =>
-                entry.map((h, idx) => (
-                  <li key={`${i}-${idx}`}>
-                    {h.amount} {h.from} → {h.to} = {Number(h.result).toFixed(2)}{" "}
-                    (Taxa: {h.rate.toFixed(4)})
-                  </li>
-                ))
-              )}
-            </ul>
-          </div>
-        )}
-
         {result && (
           <>
             <div className="result">
