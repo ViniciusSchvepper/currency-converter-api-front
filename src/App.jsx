@@ -41,7 +41,7 @@ function App() {
 
     try {
       const requests = toList.map((currency) =>
-        axios.get("http://localhost:3000/currency-converter/convert", {
+        axios.get(`${import.meta.env.VITE_API_URL}/convert`, {
           params: { from, to: currency, amount },
           headers: {
             Authorization: import.meta.env.VITE_API_KEY,
