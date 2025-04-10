@@ -18,7 +18,7 @@ function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    setHistory(getHistory());
+    // setHistory(getHistory());
   }, []);
 
   const handleAddCurrency = () => {
@@ -41,12 +41,15 @@ function App() {
 
     try {
       const requests = toList.map((currency) =>
-        axios.get(`${import.meta.env.VITE_API_URL}/convert`, {
-          params: { from, to: currency, amount },
-          headers: {
-            Authorization: import.meta.env.VITE_API_KEY,
-          },
-        })
+        axios.get(
+          `${import.meta.env.VITE_API_URL}/currency-converter/convert`,
+          {
+            params: { from, to: currency, amount },
+            headers: {
+              Authorization: import.meta.env.VITE_API_KEY,
+            },
+          }
+        )
       );
 
       const responses = await Promise.all(requests);
