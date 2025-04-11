@@ -1,12 +1,65 @@
-# React + Vite
+# currency-converter-frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
 
-Currently, two official plugins are available:
+Este é o frontend da aplicação de conversão de moedas desenvolvida como teste técnico para o **Grupo Save**. A interface permite que o usuário selecione múltiplas moedas, insira um valor e visualize os resultados em tempo real, com gráficos e histórico.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Além das funcionalidades solicitadas, foram implements **melhorias extras** como:
 
-## Expanding the ESLint configuration
+- Conversão entre múltiplas moedas (até 5 simultâneas)
+- Validação de entrada
+- Exibição da taxa de câmbio
+- Gráficos de variação cambial
+- Histórico das últimas conversões
+- Modo escuro
+- Totalmente responsivo
+- Integração com backend autenticado
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tecnologias Utilizadas
+
+- **React.js** (com Vite)
+- **Axios**
+- **CSS puro** (modo claro/escuro)
+- **Chart.js** (gráficos)
+- **localStorage** (histórico)
+
+---
+
+## Instalação e execução local
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/seu-user/currency-converter-frontend.git
+cd currency-converter-frontend
+```
+
+## Instale as depêndencias
+
+```bash
+npm install
+```
+
+## Configure as variáveis de ambiente
+
+```bash
+VITE_API_URL=https://currency-converter-api-ppzs.onrender.com/currency-converter # Este valor deve ser fixo, uma vez que é o link de para a aplicação do back
+VITE_API_KEY=
+```
+
+## Rode a aplicação
+
+```bash
+npm run dev
+```
+
+## Deploy
+
+[Frontend Vercel](https://currency-converter-api-front.vercel.app)
+
+### Backend
+
+[Repositório separado](https://github.com/ViniciusSchvepper/currency-converter-api)
+[Deploy Render](https://currency-converter-api-ppzs.onrender.com)
